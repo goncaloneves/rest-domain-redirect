@@ -33,43 +33,43 @@ if ( ! class_exists( 'Rest_Redirect_Domain' ) ) {
 		 */
 		private function __construct() {
 			$this->actions();
-        	load_plugin_textdomain( 'rest-domain-redirect' );
+			load_plugin_textdomain( 'rest-domain-redirect' );
 		}
 
 		/**
-         * Cloning is forbidden.
-         */
-        public function __clone() {
-            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'rest-domain-redirect' ), '1.0' );
-        }
-
-        /**
-         * Unserializing instances of this class is forbidden.
-         */
-        public function __wakeup() {
-            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'rest-domain-redirect' ), '1.0' );
-        }
-
-      	/**
-         * Action Hooks.
-         */
-        private function actions() {
-        	add_action( 'template_redirect', array( $this , 'rest_redirect_domain' ) );
-        }
-
-        /**
-         * Redirect To Index function.
-         */
-        public function rest_redirect_domain() {
-        	$root_domain_url = 'http://' . $_SERVER['SERVER_NAME'];
-        	$wp_url = get_site_url();
-
-        	// Prevent loop if WordPress exists in root path.
-        	if ( $root_domain_url !== $wp_url ) {
-        		wp_redirect( $root_domain_url, 301 );
-    			exit();
-        	}
-        }
+	         * Cloning is forbidden.
+	         */
+	        public function __clone() {
+            		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'rest-domain-redirect' ), '1.0' );
+	        }
+	
+	        /**
+	         * Unserializing instances of this class is forbidden.
+	         */
+	        public function __wakeup() {
+            		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'rest-domain-redirect' ), '1.0' );
+	        }
+	
+	      	/**
+	         * Action Hooks.
+	         */
+	        private function actions() {
+	        	add_action( 'template_redirect', array( $this , 'rest_redirect_domain' ) );
+	        }
+	
+	        /**
+	         * Redirect To Index function.
+	         */
+	        public function rest_redirect_domain() {
+	        	$root_domain_url = 'http://' . $_SERVER['SERVER_NAME'];
+	        	$wp_url = get_site_url();
+	
+	        	// Prevent loop if WordPress exists in root path.
+	        	if ( $root_domain_url !== $wp_url ) {
+        			wp_redirect( $root_domain_url, 301 );
+	    			exit();
+	        	}
+	        }
 	}
 }
 
